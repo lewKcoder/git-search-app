@@ -4,18 +4,13 @@ import { RepositoriesResponseType } from "../../features/types/repositoriesRespo
 
 interface ListProps {
   items: RepositoriesResponseType[];
-  currentItems: RepositoriesResponseType[];
   setCurrentItems: (param: RepositoriesResponseType[]) => void;
 }
 
-export const Pagenation: FC<ListProps> = ({
-  items,
-  currentItems,
-  setCurrentItems,
-}) => {
-  const [pageCount, setPageCount] = useState(0);
-  const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 9;
+export const Pagenation: FC<ListProps> = ({ items, setCurrentItems }) => {
+  const [pageCount, setPageCount] = useState<number>(0);
+  const [itemOffset, setItemOffset] = useState<number>(0);
+  const itemsPerPage: number = 9;
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -26,20 +21,21 @@ export const Pagenation: FC<ListProps> = ({
   const handlePageClick = (event: any) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
     setItemOffset(newOffset);
-    console.log(currentItems);
   };
 
   return (
     <>
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel=">"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        pageCount={pageCount}
-        previousLabel="<"
-        containerClassName="patination"
-      />
+      {items.length > 0 && (
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={3}
+          pageCount={pageCount}
+          previousLabel="<"
+          containerClassName="patination"
+        />
+      )}
     </>
   );
 };

@@ -9,14 +9,14 @@ import {
   StyledUlUserCard,
   StyledSpanFeatureIcon,
   StyledSpanFeatureNumber,
-} from "./Card.styles";
+} from "./Cards.styles";
 import { RepositoriesResponseType } from "../../features/types/repositoriesResponse";
 
 interface RepositoriesResponseProps {
   list: RepositoriesResponseType[];
 }
 
-export const Card: FC<RepositoriesResponseProps> = ({ list }) => {
+export const Cards: FC<RepositoriesResponseProps> = ({ list }) => {
   return (
     <StyledUlUserCard>
       {list.map(
