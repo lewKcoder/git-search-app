@@ -1,7 +1,45 @@
-import React from "react";
+import { FC, useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
+import { RepositoriesResponseType } from "../../features/types/repositoriesResponse";
 
-const Pagenation = () => {
-  return <div>Pagenation</div>;
+interface ListProps {
+  items: RepositoriesResponseType[];
+  currentItems: RepositoriesResponseType[];
+  setCurrentItems: (param: RepositoriesResponseType[]) => void;
+}
+
+export const Pagenation: FC<ListProps> = ({
+  items,
+  currentItems,
+  setCurrentItems,
+}) => {
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 9;
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(items.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(items.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, items]);
+
+  const handlePageClick = (event: any) => {
+    const newOffset = (event.selected * itemsPerPage) % items.length;
+    setItemOffset(newOffset);
+    console.log(currentItems);
+  };
+
+  return (
+    <>
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        pageCount={pageCount}
+        previousLabel="<"
+        containerClassName="patination"
+      />
+    </>
+  );
 };
-
-export default Pagenation;

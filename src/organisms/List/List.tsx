@@ -1,28 +1,15 @@
-import { FC, useState } from "react";
-import axios from "axios";
+import { FC } from "react";
 import { Search } from "../../molecules/Search/Search";
-import { Card } from "../../molecules/Card/Card";
+import { Card } from "../Card/Card";
+import { RepositoriesResponseType } from "../../features/types/repositoriesResponse";
 
-export const List = () => {
-  const [keyword, setKeyword] = useState<any>("");
-  const [list, setList] = useState<[]>([]);
+interface ListProps {
+  list: RepositoriesResponseType[];
+  handleSearch: () => void;
+  handleKeyword: (value: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-  const handleKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.target.value);
-    console.log(e.target.value);
-  };
-
-  const handleSearch = () => {
-    axios
-      .get(
-        `https://api.github.com/search/repositories?q=${keyword}&per_page=100`
-      )
-      .then((response) => {
-        setList(response.data.items);
-        console.log(response.data.items);
-      });
-  };
-
+export const List: FC<ListProps> = ({ list, handleSearch, handleKeyword }) => {
   return (
     <>
       <Search handleKeyword={handleKeyword} handleSearch={handleSearch} />

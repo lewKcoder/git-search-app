@@ -1,14 +1,13 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { FC } from "react";
+import { StyledDivApp } from "./App.styles";
 import { SearchRepository } from "../src/template/SearchRepository/SearchRepository";
 
-function App() {
+const App: FC = () => {
   return (
-    <div className="App">
+    <StyledDivApp>
       <SearchRepository />
-    </div>
+    </StyledDivApp>
   );
-}
+};
 
 export default App;

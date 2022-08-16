@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { StyledHeader } from "./Header.styles";
+import { StyledDivHeader } from "./Header.styles";
 
 export const Header: FC = () => {
-  return <div style={StyledHeader}>Search GitHub repositories.</div>;
+  return <StyledDivHeader>Search GitHub repositories.</StyledDivHeader>;
 };

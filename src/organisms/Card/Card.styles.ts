@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
 
-export const StyledUlUserCard = styled.li({
+export const StyledUlUserCard = styled.ul({
   display: "flex",
   flexWrap: "wrap",
+  gap: "24px",
+  justifyContent: "center",
   listStyle: "none",
-  padding: "80px 0",
+  padding: "24px 0 54px",
 });
 
 export const StyledLiUserCard = styled.li({
@@ -12,7 +14,7 @@ export const StyledLiUserCard = styled.li({
   boxShadow: "0px 1px 8px 3px #e0e0e0",
   borderRadius: "8px",
   display: "flex",
-  margin: "0 auto 24px",
+  minWidth: "330px",
   padding: "24px",
   width: "25%",
 });
@@ -46,4 +48,5 @@ export const StyledSpanFeatureNumber = styled.span({
 });
 export const StyledPBranchName = styled.p({
   margin: "0 0 16px",
+  wordBreak: "break-word",
 });

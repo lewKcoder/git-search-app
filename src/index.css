@@ -1,5 +1,5 @@
 body {
-  margin: 80px;
+  margin: 80px 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -10,4 +10,24 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.patination {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+}
+
+.patination li {
+  padding: 0 8px;
+  color: rgb(108, 108, 108);
+}
+
+.patination li.selected {
+  color: #000;
+}
+
+.patination li.disabled {
+  color: rgb(215, 215, 215);
 }
