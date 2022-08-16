@@ -1,5 +1,9 @@
 import { FC } from "react";
-import { RepositoriesResponseType } from "../../features/types/repositoriesResponse";
+import {
+  StyledButton,
+  StyledDivInputWrapper,
+  StyledInput,
+} from "./Search.styles";
 
 interface SearchProps {
   isLoading: boolean;
@@ -13,11 +17,11 @@ export const Search: FC<SearchProps> = ({
   handleKeyword,
 }) => {
   return (
-    <>
-      <input type="text" onChange={(e) => handleKeyword(e)} />
-      <button onClick={handleSearch} disabled={isLoading}>
+    <StyledDivInputWrapper>
+      <StyledInput type="text" onChange={(e) => handleKeyword(e)} />
+      <StyledButton onClick={handleSearch} disabled={isLoading}>
         Search
-      </button>
-    </>
+      </StyledButton>
+    </StyledDivInputWrapper>
   );
 };

@@ -5,10 +5,10 @@ import {
   StyledDivFeatureInfo,
   StyledDivInfo,
   StyledLiUserCard,
-  StyledUserIcon,
-  StyledUlUserCard,
   StyledSpanFeatureIcon,
   StyledSpanFeatureNumber,
+  StyledUserIcon,
+  StyledUlUserCard,
 } from "./Cards.styles";
 import { RepositoriesResponseType } from "../../features/types/repositoriesResponse";
 

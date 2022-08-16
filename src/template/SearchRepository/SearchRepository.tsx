@@ -14,6 +14,7 @@ export const SearchRepository: FC = () => {
   const [currentItems, setCurrentItems] =
     useState<RepositoriesResponseType[]>(list);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [searched, setSearched] = useState<number>(0);
 
   const handleKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
@@ -22,11 +23,15 @@ export const SearchRepository: FC = () => {
   const handleSearch = async (): Promise<void> => {
     setIsLoading(true);
     await axios
-      .get(`${GIT_REPOSITORIES_SEARCH_API}${keyword}`)
+      .get(`${GIT_REPOSITORIES_SEARCH_API}${keyword}`, { timeout: 10000 })
       .then((response) => {
         setList(response.data.items);
+      })
+      .catch((e) => {
+        console.error("timeout");
       });
     setIsLoading(false);
+    setSearched((prev) => prev + 1);
   };
 
   return (
@@ -45,6 +50,7 @@ export const SearchRepository: FC = () => {
           <Pagenation items={list} setCurrentItems={setCurrentItems} />
         </>
       )}
+      {list.length === 0 && !isLoading && searched > 0 && <p>Not found.</p>}
     </>
   );
 };

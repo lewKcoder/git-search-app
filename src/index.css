@@ -20,6 +20,7 @@ code {
 }
 
 .patination li {
+  cursor: pointer;
   padding: 0 8px;
   color: rgb(108, 108, 108);
 }
@@ -30,4 +31,5 @@ code {
 
 .patination li.disabled {
   color: rgb(215, 215, 215);
+  cursor: default;
 }
