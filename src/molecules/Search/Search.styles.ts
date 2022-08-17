@@ -20,4 +20,8 @@ export const StyledButton = styled.button({
   cursor: "pointer",
   fontSize: "16px",
   height: "26.5px",
+  "&:disabled": {
+    cursor: "default",
+    opacity: "0.6",
+  },
 });
